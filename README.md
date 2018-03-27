@@ -2,7 +2,10 @@
 
 [![Total Downloads](https://img.shields.io/github/downloads/caiofrota/cf-rest/total.svg)](https://github.com/caiofrota/cf-rest/releases)
 [![GitHub issues](https://img.shields.io/github/issues/caiofrota/cf-rest.svg)](https://github.com/caiofrota/cf-rest/issues)
-[![Fork](https://img.shields.io/github/forks/caiofrota/cf-rest.svg)](https://github.com/caiofrota/cf-rest#fork-destination-box)
+[![Fork](https://img.shields.io/github/forks/caiofrota/cf-rest.svg)](#)
+[![Stars](https://img.shields.io/github/stars/caiofrota/cf-rest.svg)](#)
+[![License](https://img.shields.io/github/license/caiofrota/cf-rest.svg)](#)
+
 
 
 # CF Rest
