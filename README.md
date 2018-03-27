@@ -1,12 +1,11 @@
 ![alt text](https://cftechsol.com/wp-content/uploads/2017/12/caiofrota-logo-300x171.png)
 
-[![Total Downloads](https://img.shields.io/github/downloads/caiofrota/cf-rest/total.svg)](https://github.com/caiofrota/cf-rest/releases)
+[![Build](https://img.shields.io/travis/caiofrota/cf-rest.svg)](#)
 [![GitHub issues](https://img.shields.io/github/issues/caiofrota/cf-rest.svg)](https://github.com/caiofrota/cf-rest/issues)
 [![Fork](https://img.shields.io/github/forks/caiofrota/cf-rest.svg)](#)
 [![Stars](https://img.shields.io/github/stars/caiofrota/cf-rest.svg)](#)
 [![License](https://img.shields.io/github/license/caiofrota/cf-rest.svg)](#)
-
-
+[![Total Downloads](https://img.shields.io/github/downloads/caiofrota/cf-rest/total.svg)](https://github.com/caiofrota/cf-rest/releases)
 
 # CF Rest
 
