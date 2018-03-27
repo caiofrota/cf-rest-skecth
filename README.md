@@ -76,7 +76,7 @@ public class TestController {
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/caiforota/gistid) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://gist.github.com/caiofrota/6e65a17fd3bf100d058cb48dcc780b21) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 
