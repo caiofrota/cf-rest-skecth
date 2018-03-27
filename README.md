@@ -1,7 +1,7 @@
 ![alt text](https://cftechsol.com/wp-content/uploads/2017/12/caiofrota-logo-300x171.png)
 
 [![Total Downloads](https://img.shields.io/github/downloads/caiofrota/cf-rest/total.svg)](https://github.com/caiofrota/cf-rest/releases)
-[![Join the chat on slack!](https://img.shields.io/discord/417774914645262338.svg)](https://discord.gg/7maEAxV)
+
 
 # CF Rest
 
