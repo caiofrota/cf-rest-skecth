@@ -19,7 +19,7 @@ import com.cftechsol.rest.ApiError;
  */
 @Order(Ordered.LOWEST_PRECEDENCE)
 @ControllerAdvice
-public class RestExceptionHandler<T> extends ResponseEntityExceptionHandler {
+public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(Exception.class)
 	protected ResponseEntity<Object> handleException(Exception e) {

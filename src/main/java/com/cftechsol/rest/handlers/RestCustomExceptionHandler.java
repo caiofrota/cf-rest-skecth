@@ -21,7 +21,7 @@ import com.cftechsol.rest.exceptions.NonUniqueException;
  */
 @Order(Ordered.LOWEST_PRECEDENCE - 1000)
 @ControllerAdvice
-public class RestCustomExceptionHandler<T> extends ResponseEntityExceptionHandler {
+public class RestCustomExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(NonUniqueException.class)
 	protected ResponseEntity<Object> handleUniqueConstraintViolation(NonUniqueException e) {
