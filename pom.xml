@@ -46,4 +46,23 @@
 		</repository>
 	</repositories>
 
+	<!-- Build configurations -->
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+				<version>1.0-alpha-6</version>
+			</extension>
+		</extensions>
+	</build>
+
+	<!-- Deploy configurations -->
+	<distributionManagement>
+		<repository>
+			<id>cftechsol</id>
+			<url>ftp://ftp.cftechnologysolutions.com/webapps/maven2</url>
+		</repository>
+	</distributionManagement>
+
 </project>
