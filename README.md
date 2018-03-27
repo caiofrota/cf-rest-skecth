@@ -1,3 +1,5 @@
+[![Total Downloads](https://img.shields.io/github/downloads/onivim/oni/total.svg)](https://github.com/caiofrota/cf-rest/releases)
+
 # CF Rest
 
 An API to assist rest projects in terms of handling exceptions.
