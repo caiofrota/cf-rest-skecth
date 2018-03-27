@@ -5,7 +5,7 @@ jdk:
 install: true
 script:
   - mvn clean install
-  - bash <(curl -s https://codecov.io/bash) -t uuid-repo-token
+  - bash <(curl -s https://codecov.io/bash) -t bb3650f1-e26d-424d-8691-999f643be5ae
 
 cache:
   directories:
