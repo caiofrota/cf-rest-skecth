@@ -1,6 +1,8 @@
 ![alt text](https://cftechsol.com/wp-content/uploads/2017/12/caiofrota-logo-300x171.png)
 
 [![Total Downloads](https://img.shields.io/github/downloads/caiofrota/cf-rest/total.svg)](https://github.com/caiofrota/cf-rest/releases)
+[![GitHub issues](https://img.shields.io/github/issues/caiofrota/cf-rest.svg)](https://github.com/caiofrota/cf-rest/issues)
+[![Fork](https://img.shields.io/github/forks/caiofrota/cf-rest.svg)](https://github.com/caiofrota/cf-rest#fork-destination-box)
 
 
 # CF Rest
