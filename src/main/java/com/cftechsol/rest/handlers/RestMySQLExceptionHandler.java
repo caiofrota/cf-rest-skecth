@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.cftechsol.rest.ApiError;
-import com.cftechsol.rest.ApiUniqueValidationError;
-import com.cftechsol.rest.exceptions.NonUniqueException;
 
 /**
- * Handler to get MySQL exceptions.
+ * Handler to get custom exceptions.
  * 
  * @author Caio Frota <contact@cftechsol.com>
  * @version 1.0
@@ -32,11 +30,4 @@ public class RestMySQLExceptionHandler<T> extends ResponseEntityExceptionHandler
 		return new ResponseEntity<Object>(apiError, apiError.getStatus());
 	}
 	
-	@ExceptionHandler(NonUniqueException.class)
-	protected ResponseEntity<Object> handleUniqueConstraintViolation(NonUniqueException e) {
-		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
-		apiError.addSubError(new ApiUniqueValidationError(e.getObject(), e.getKeys(), e.getValues(), e.getMessage()));
-		return new ResponseEntity<Object>(apiError, apiError.getStatus());
-	}
-
 }
