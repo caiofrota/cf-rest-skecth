@@ -1,9 +1,11 @@
 language: java
-jdk: oraclejdk8
+jdk:
+  - oraclejdk8
 
 install: true
-script: ./mvnw clean install
+script:
+  ./mvn clean install
 
 cache:
   directories:
-  - $HOME/.m2
+    - '$HOME/.m2/repository'
