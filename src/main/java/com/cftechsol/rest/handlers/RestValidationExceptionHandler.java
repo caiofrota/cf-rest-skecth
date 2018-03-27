@@ -21,7 +21,7 @@ import com.cftechsol.rest.ApiError;
  */
 @Order(Ordered.LOWEST_PRECEDENCE - 1000)
 @ControllerAdvice
-public class RestMySQLExceptionHandler extends ResponseEntityExceptionHandler {
+public class RestValidationExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(ConstraintViolationException.class)
 	protected ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException e) {
