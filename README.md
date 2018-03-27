@@ -1,6 +1,7 @@
 ![alt text](https://cftechsol.com/wp-content/uploads/2017/12/caiofrota-logo-300x171.png)
 
 [![Build](https://img.shields.io/travis/caiofrota/cf-rest.svg)](#)
+[![Coverage](https://codecov.io/gh/caiofrota/cf-rest/branch/master/graph/badge.svg)](#)
 [![GitHub issues](https://img.shields.io/github/issues/caiofrota/cf-rest.svg)](https://github.com/caiofrota/cf-rest/issues)
 [![Fork](https://img.shields.io/github/forks/caiofrota/cf-rest.svg)](#)
 [![Stars](https://img.shields.io/github/stars/caiofrota/cf-rest.svg)](#)
