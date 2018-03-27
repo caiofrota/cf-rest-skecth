@@ -1,4 +1,4 @@
-[![Total Downloads](https://img.shields.io/github/downloads/onivim/oni/total.svg)](https://github.com/caiofrota/cf-rest/releases)
+[![Total Downloads](https://img.shields.io/github/downloads/caiofrota/cf-rest/total.svg)](https://github.com/caiofrota/cf-rest/releases)
 
 # CF Rest
 
