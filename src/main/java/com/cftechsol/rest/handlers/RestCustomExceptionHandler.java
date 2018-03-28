@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.cftechsol.rest.ApiError;
-import com.cftechsol.rest.ApiUniqueValidationError;
 import com.cftechsol.rest.exceptions.NonUniqueException;
+import com.cftechsol.rest.exceptions.api.ApiError;
+import com.cftechsol.rest.exceptions.api.ApiUniqueValidationError;
 
 /**
  * Handler to get MySQL exceptions.

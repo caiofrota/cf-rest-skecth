@@ -1,4 +1,4 @@
-package com.cftechsol.rest;
+package com.cftechsol.rest.exceptions.api;
 
 /**
  * Abstract class that maps an object of type suberror.

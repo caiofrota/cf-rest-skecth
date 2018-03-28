@@ -1,4 +1,4 @@
-package com.cftechsol.rest;
+package com.cftechsol.rest.exceptions.api;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
