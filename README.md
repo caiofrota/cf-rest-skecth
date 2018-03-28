@@ -8,6 +8,7 @@
 [![License](https://img.shields.io/github/license/caiofrota/cf-rest.svg)](#)
 [![Total Downloads](https://img.shields.io/github/downloads/caiofrota/cf-rest/total.svg)](https://github.com/caiofrota/cf-rest/releases)
 [![Slack Chat](https://img.shields.io/badge/chat-slack-green.svg)](https://cftechsol.slack.com)
+[![Website](https://img.shields.io/badge/website-cftechsol.com-green.svg)](https://cftechsol.com)
 
 # CF Rest
 
