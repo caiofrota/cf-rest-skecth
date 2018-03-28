@@ -46,9 +46,10 @@
 			<url>http://projectlombok.org/mavenrepo</url>
 		</repository>
 	</repositories>
-	
+
 	<!-- Build configurations -->
 	<build>
+		<!-- Cobertura -->
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -63,6 +64,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<!-- Wagon FTP -->
 		<extensions>
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
