@@ -13,6 +13,7 @@
 # CF Rest
 
 An API to assist rest projects in terms of handling exceptions.
+Version 1.0.0 still in progress.
 
 ## Getting Started
 
