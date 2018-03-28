@@ -71,11 +71,9 @@
 				<artifactId>cobertura-maven-plugin</artifactId>
 				<version>2.7</version>
 				<configuration>
-					<formats>
-						<format>html</format>
-						<format>xml</format>
-					</formats>
-					<check />
+					<excludes>
+		                <exclude>**/com/cftechsol/rest/exceptions/api/**/*.class</exclude>
+		            </excludes>
 				</configuration>
 			</plugin>
 		</plugins>
