@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.cftechsol.rest.example.ExampleEntity;
 import com.cftechsol.rest.example.ExampleService;
+import com.cftechsol.rest.exampleaudit.ExampleAuditEntity;
+import com.cftechsol.rest.exampleaudit.ExampleAuditService;
 import com.cftechsol.rest.exceptions.NonUniqueException;
 
 /**
@@ -28,74 +29,83 @@ public class GenericServiceTest {
 
 	@Autowired
 	private ExampleService service;
+	@Autowired
+	private ExampleAuditService auditService;
 
 	private String name = "Example";
 
-	@Before
-	public void setup() throws Exception {
-		ExampleEntity example = new ExampleEntity(name);
-		example.setId(1l);
-		service.save(example);
-	}
-
 	@Test
 	public void shouldFindAll() throws Exception {
+		ExampleEntity example = new ExampleEntity(name);
+		example = service.save(example);
+		
 		List<ExampleEntity> found = service.findAll();
 		Assert.assertFalse(found.isEmpty());
 	}
 
 	@Test
 	public void shouldFindOneById() throws Exception {
-		ExampleEntity found = service.findById(1l);
-		Assert.assertEquals(found.getId(), new Long(1));
+		ExampleEntity example = new ExampleEntity(name);
+		example = service.save(example);
+		
+		ExampleEntity found = service.findById(example.getId());
+		Assert.assertEquals(found.getId(), example.getId());
 	}
 
 	@Test
 	public void shouldUpdateOneById() throws Exception {
+		ExampleEntity example = new ExampleEntity(name);
+		example = service.save(example);
+
 		String newName = "Example Changed";
-		ExampleEntity found = service.findById(1l);
+		example.setName(newName);
+		example = service.save(example);
+		
+		ExampleEntity found = service.findById(example.getId());
 		found.setName(newName);
 		found = service.save(found);
 		Assert.assertEquals(found.getName(), newName);
-
-		// Return to old status.
-		found.setName(name);
-		service.save(found);
 	}
 
 	@Test
 	public void shouldSaveAuditFields() throws Exception {
-		ExampleEntity example = new ExampleEntity(name + " Audit");
-		example = service.save(example, 1l);
+		ExampleAuditEntity example = new ExampleAuditEntity(name + " Audit");
+		example = auditService.save(example, 1l);
 
 		Assert.assertEquals(example.getCreatedBy(), 1l);
 		Assert.assertEquals(example.getUpdatedBy(), 1l);
 		Assert.assertNotNull(example.getCreatedOn());
 		Assert.assertNotNull(example.getUpdatedOn());
 		Assert.assertEquals(example.getCreatedOn(), example.getUpdatedOn());
-
-		// Return to old status.
-		service.delete(example.getId());
 	}
 
 	@Test
 	public void shouldUpdateAuditFields() throws Exception {
-		ExampleEntity example = new ExampleEntity(name + " Audit");
-		example = service.save(example, 1l);
-		service.save(example, 2l);
+		ExampleAuditEntity example = new ExampleAuditEntity(name + " Audit");
+		example = auditService.save(example, 1l);
+		auditService.save(example, 2l);
 
 		Assert.assertEquals(example.getCreatedBy(), 1l);
 		Assert.assertEquals(example.getUpdatedBy(), 2l);
 		Assert.assertNotNull(example.getCreatedOn());
 		Assert.assertNotNull(example.getUpdatedOn());
 		Assert.assertNotEquals(example.getCreatedOn(), example.getUpdatedOn());
+	}
+	
+	@Test
+	public void shouldSaveOkWhenCallAuditWithNonAuditObject() throws Exception {
+		ExampleEntity example = new ExampleEntity(name + " Audit");
+		example = service.save(example, 1l);
 
-		// Return to old status.
-		service.delete(example.getId());
+		ExampleEntity found = service.findById(example.getId());
+		Assert.assertEquals(found.getId(), example.getId());
 	}
 
 	@Test
-	public void whenValidNameEntityShouldBeFound() {
+	public void whenValidNameEntityShouldBeFound() throws Exception {
+		ExampleEntity example = new ExampleEntity(name);
+		example = service.save(example);
+		
 		String name = "Example";
 		ExampleEntity found = service.findByName(name);
 		Assert.assertEquals(found.getName(), name);
@@ -103,8 +113,11 @@ public class GenericServiceTest {
 
 	@Test(expected = NoSuchElementException.class)
 	public void shouldDeleteById() throws Exception {
-		service.delete(1l);
-		service.findById(1l);
+		ExampleEntity example = new ExampleEntity(name);
+		example = service.save(example);
+		
+		service.delete(example.getId());
+		service.findById(example.getId());
 	}
 
 	@Test(expected = NonUniqueException.class)
