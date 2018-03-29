@@ -23,6 +23,27 @@
 		<props.compile.jdk.target>1.8</props.compile.jdk.target>
 	</properties>
 
+	<!-- Developers specification -->
+	<developers>
+		<developer>
+			<id>caiofrota</id>
+			<name>Caio Frota</name>
+			<email>contact@cftechsol.com</email>
+			<organization>CF Technology Solutions</organization>
+			<organizationUrl>https://www.cftechsol.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>-3</timezone>
+		</developer>
+	</developers>
+
+	<!-- Organization specification -->
+	<organization>
+		<name>CF Technology Solutions</name>
+		<url>https://www.cftechsol.com</url>
+	</organization>
+
 	<dependencies>
 		<!-- Spring Boot - Web -->
 		<dependency>
