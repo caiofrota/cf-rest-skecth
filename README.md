@@ -127,7 +127,7 @@ public class ExampleController extends GenericController<ExampleService, Example
 ```
 @Controller
 @RequestMapping(path = "/example", produces = MediaType.APPLICATION_JSON_VALUE)
-public class TestController {
+public class ExampleController {
 	@GetMapping(path="/hello")
 	public void getException() throws Exception {
 		throw new Exception("Exception test!");
