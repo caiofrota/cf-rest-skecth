@@ -33,7 +33,7 @@ public class GenericServiceTest {
 
 	@Before
 	public void setup() throws Exception {
-		ExampleEntity example = new ExampleEntity("Example");
+		ExampleEntity example = new ExampleEntity(name);
 		example.setId(1l);
 		service.save(example);
 	}
@@ -61,6 +61,38 @@ public class GenericServiceTest {
 		// Return to old status.
 		found.setName(name);
 		service.save(found);
+	}
+	
+	@Test
+	public void shouldSaveAuditFields() throws Exception {
+		ExampleEntity example = new ExampleEntity(name + " Audit");
+		example = service.save(example, 1l);
+		
+		Assert.assertEquals(example.getCreatedBy(), 1l);
+		Assert.assertEquals(example.getUpdatedBy(), 1l);
+		Assert.assertNotNull(example.getCreatedOn());
+		Assert.assertNotNull(example.getUpdatedOn());
+		Assert.assertEquals(example.getCreatedOn(), example.getUpdatedOn());
+
+		// Return to old status.
+		service.delete(example.getId());
+	}
+	
+	@Test
+	public void shouldUpdateAuditFields() throws Exception {
+		ExampleEntity example = new ExampleEntity(name + " Audit");
+		example = service.save(example, 1l);
+		//Thread.sleep(1000);
+		service.save(example, 2l);
+		
+		Assert.assertEquals(example.getCreatedBy(), 1l);
+		Assert.assertEquals(example.getUpdatedBy(), 2l);
+		Assert.assertNotNull(example.getCreatedOn());
+		Assert.assertNotNull(example.getUpdatedOn());
+		Assert.assertNotEquals(example.getCreatedOn(), example.getUpdatedOn());
+
+		// Return to old status.
+		service.delete(example.getId());
 	}
 
 	@Test

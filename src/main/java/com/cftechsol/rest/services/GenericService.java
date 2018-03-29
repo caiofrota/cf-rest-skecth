@@ -1,9 +1,12 @@
 package com.cftechsol.rest.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.cftechsol.rest.entities.GenericAuditEntity;
 
 import lombok.Getter;
 
@@ -56,6 +59,31 @@ public class GenericService<R extends JpaRepository<E, PK>, E, PK> {
 	 */
 	public E save(E object) throws Exception {
 		return this.repository.save(object);
+	}
+	
+	/**
+	 * Save an object.
+	 * 
+	 * @param object
+	 *            Object to save.
+	 * @return Object saved.
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	public E save(E object, long user) throws Exception {
+		if (object instanceof GenericAuditEntity) {
+			GenericAuditEntity<PK> audit = (GenericAuditEntity<PK>) object;
+			Date now = new Date();
+			if (audit.getId() == null) {
+				audit.setCreatedBy(user);
+				audit.setCreatedOn(new Date());
+			}
+			audit.setUpdatedBy(user);
+			audit.setUpdatedOn(now);
+			return this.repository.save((E) audit);
+		} else {
+			return this.repository.save(object);
+		}
 	}
 
 	/**
