@@ -13,7 +13,7 @@ import lombok.Setter;
 /**
  * Entity superclass that maps an entity with audit fields.
  * 
- * @author Caio Frota <contact@cftechsol.com>
+ * @author Caio Frota {@literal <contact@cftechsol.com>}
  * @version 1.0
  * @since 1.0
  *

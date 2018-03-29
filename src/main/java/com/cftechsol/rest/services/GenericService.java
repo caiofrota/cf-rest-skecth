@@ -11,13 +11,14 @@ import com.cftechsol.rest.entities.GenericAuditEntity;
 import lombok.Getter;
 
 /**
+ * Generic Service common methods to accelerate the creation of services.
  * 
- * @author Caio Frota <contact@cftechsol.com>
+ * @author Caio Frota {@literal <contact@cftechsol.com>}
  * @version 1.0
  * @since 1.0
  *
  * @param <R>
- *            extends JpaRepository<E, PK>
+ *            extends JpaRepository
  * @param <E>
  *            Entity
  * @param <PK>

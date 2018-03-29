@@ -15,6 +15,20 @@ import com.cftechsol.rest.services.GenericService;
 
 import lombok.Getter;
 
+/**
+ * Generic Controller with common methods to accelerate the creation of services.
+ * 
+ * @author Caio Frota {@literal <contact@cftechsol.com>}
+ * @version 1.0
+ * @since 1.0
+ *
+ * @param <S>
+ *            Service
+ * @param <E>
+ *            Entity
+ * @param <PK>
+ *            Primaru key
+ */
 @Getter
 public class GenericController<S extends GenericService<? extends JpaRepository<E, PK>, E, PK>, E, PK> {
 
@@ -25,8 +39,8 @@ public class GenericController<S extends GenericService<? extends JpaRepository<
 	public List<E> findAll() {
 		return service.findAll();
 	}
-	
-	@GetMapping(path="/id/{id}")
+
+	@GetMapping(path = "/id/{id}")
 	public E findById(@PathVariable PK id) {
 		return service.findById(id);
 	}
