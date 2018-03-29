@@ -95,7 +95,10 @@ public class TestController {
 * [Project Lombok](https://projectlombok.org/) - Reducing Boilerplate Code
 * [H2 Database](http://www.h2database.com) - Java SQL Database - To run the tests
 * [GSON](https://github.com/google/gson) - Google JSON library for Java
+* [Travis CI](https://travis-ci.org/) - Continuos Integration
 * [JaCoCo](http://www.eclemma.org/jacoco/) - Code Coverage Library for Java
+* [Codecov](https://codecov.io/) - Code coverage reports repository
+* [Maven Wagon FTP](http://maven.apache.org/wagon/wagon-providers/wagon-ftp/) - Apache FTP Plugin
 
 ## Contributing
 
