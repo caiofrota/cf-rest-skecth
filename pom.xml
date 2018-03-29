@@ -64,7 +64,7 @@
 
 	<!-- Build configurations -->
 	<build>
-		<!-- Cobertura -->
+		<!-- JaCoCo -->
 		<plugins>
 			<plugin>
 				<groupId>org.jacoco</groupId>
