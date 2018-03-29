@@ -88,6 +88,15 @@ public class TestController {
 }
 ```
 
+### Built With
+
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [Spring Boot](https://projects.spring.io/spring-boot/) - Inversion Of Control (IOC) - Boot, Data and Test
+* [Project Lombok](https://projectlombok.org/) - Reducing Boilerplate Code
+* [H2 Database](http://www.h2database.com) - Java SQL Database - To run the tests
+* [GSON](https://github.com/google/gson) - Google JSON library for Java
+* [JaCoCo](http://www.eclemma.org/jacoco/) - Code Coverage Library for Java
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/caiofrota/6e65a17fd3bf100d058cb48dcc780b21) for details on our code of conduct, and the process for submitting pull requests to us.
