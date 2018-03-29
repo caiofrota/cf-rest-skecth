@@ -3,7 +3,7 @@ package com.cftechsol.rest.example;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
-import com.cftechsol.rest.entities.GenericAuditEntity;
+import com.cftechsol.rest.entities.GenericEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +22,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExampleEntity extends GenericAuditEntity<Long> {
+public class ExampleEntity extends GenericEntity<Long> {
 
 	private static final long serialVersionUID = -4236664326786547752L;
 	
