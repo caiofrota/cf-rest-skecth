@@ -12,9 +12,9 @@
 
 # CF Rest
 
-An API to assist rest projects in terms of handling exceptions.
+An API to assist rest projects.
 
-Version 1.0.0 still in progress.
+Version 1.0.0 is still in progress.
 
 ## Getting Started
 
@@ -74,6 +74,55 @@ public class Application {
 ```
 
 ### Running example
+
+#### Example of use GenericEntity
+
+```
+import javax.persistence.Entity;
+import com.cftechsol.rest.entities.GenericEntity;
+import lombok.Data;
+
+@Entity
+@Data
+public class ExampleEntity extends GenericEntity<Long> {
+	private String name;
+}
+```
+
+#### Example of use GenericService
+
+```
+import org.springframework.stereotype.Service;
+import com.cftechsol.rest.services.GenericService;
+
+@Service
+public class ExampleService extends GenericService<ExampleRepository, ExampleEntity, Long> {
+	public ExampleEntity findByName(String name) {
+		return this.getRepository().findByName(name);
+	};
+}
+```
+
+#### Example of use GenericController
+
+```
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.cftechsol.rest.controllers.GenericController;
+
+@RestController
+@RequestMapping(path = "/example", produces = MediaType.APPLICATION_JSON_VALUE)
+public class ExampleController extends GenericController<ExampleService, ExampleEntity, Long> {
+	@GetMapping(path="/filter")
+	public ExampleEntity findByName(String name) {
+		return this.getService().findByName(name);
+	}
+}
+```
+
+#### Example of use exception handler
 
 ```
 @Controller
