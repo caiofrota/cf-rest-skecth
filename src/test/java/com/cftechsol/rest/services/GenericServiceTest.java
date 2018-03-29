@@ -28,7 +28,7 @@ public class GenericServiceTest {
 
 	@Autowired
 	private ExampleService service;
-	
+
 	private String name = "Example";
 
 	@Before
@@ -37,7 +37,7 @@ public class GenericServiceTest {
 		example.setId(1l);
 		service.save(example);
 	}
-	
+
 	@Test
 	public void shouldFindAll() throws Exception {
 		List<ExampleEntity> found = service.findAll();
@@ -49,7 +49,7 @@ public class GenericServiceTest {
 		ExampleEntity found = service.findById(1l);
 		Assert.assertEquals(found.getId(), new Long(1));
 	}
-	
+
 	@Test
 	public void shouldUpdateOneById() throws Exception {
 		String newName = "Example Changed";
@@ -57,17 +57,17 @@ public class GenericServiceTest {
 		found.setName(newName);
 		found = service.save(found);
 		Assert.assertEquals(found.getName(), newName);
-		
+
 		// Return to old status.
 		found.setName(name);
 		service.save(found);
 	}
-	
+
 	@Test
 	public void shouldSaveAuditFields() throws Exception {
 		ExampleEntity example = new ExampleEntity(name + " Audit");
 		example = service.save(example, 1l);
-		
+
 		Assert.assertEquals(example.getCreatedBy(), 1l);
 		Assert.assertEquals(example.getUpdatedBy(), 1l);
 		Assert.assertNotNull(example.getCreatedOn());
@@ -77,14 +77,13 @@ public class GenericServiceTest {
 		// Return to old status.
 		service.delete(example.getId());
 	}
-	
+
 	@Test
 	public void shouldUpdateAuditFields() throws Exception {
 		ExampleEntity example = new ExampleEntity(name + " Audit");
 		example = service.save(example, 1l);
-		//Thread.sleep(1000);
 		service.save(example, 2l);
-		
+
 		Assert.assertEquals(example.getCreatedBy(), 1l);
 		Assert.assertEquals(example.getUpdatedBy(), 2l);
 		Assert.assertNotNull(example.getCreatedOn());
@@ -101,13 +100,13 @@ public class GenericServiceTest {
 		ExampleEntity found = service.findByName(name);
 		Assert.assertEquals(found.getName(), name);
 	}
-	
+
 	@Test(expected = NoSuchElementException.class)
 	public void shouldDeleteById() throws Exception {
 		service.delete(1l);
 		service.findById(1l);
 	}
-	
+
 	@Test(expected = NonUniqueException.class)
 	public void shouldDeleteByIds() throws Exception {
 		throw new NonUniqueException("Teste", new String[] { "keys" }, new String[] { "values" });
