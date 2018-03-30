@@ -28,7 +28,7 @@ import com.cftechsol.rest.users.UserService;
  * @since 1.0.0
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(UserController.class)
+@WebMvcTest(controllers = UserController.class, secure = false)
 public class UseControllerTest {
 
 	@Autowired

@@ -30,7 +30,7 @@ import com.google.gson.Gson;
  * @since 1.0.0
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(ExampleController.class)
+@WebMvcTest(controllers = ExampleController.class, secure = false)
 public class GenericControllerTest {
 
 	@Autowired
@@ -80,7 +80,8 @@ public class GenericControllerTest {
 
 	@Test
 	public void whenValidNameEntityShouldBeFound() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/example/filter?name=" + name)).andExpect(MockMvcResultMatchers.status().isOk())
+		mockMvc.perform(MockMvcRequestBuilders.get("/example/filter?name=" + name))
+				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString(name)));
 	}
 
@@ -96,20 +97,20 @@ public class GenericControllerTest {
 				.andExpect(MockMvcResultMatchers.status().isInternalServerError())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("Example Message")));
 	}
-	
+
 	@Test
 	public void shouldGetNonUniqueException() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/example/nonUniqueException"))
 				.andExpect(MockMvcResultMatchers.status().isBadRequest())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("keys")));
 	}
-	
+
 	@Test
 	public void shouldGetValidationException() throws Exception {
 		Gson gson = new Gson();
 		ExampleEntity validationExample = new ExampleEntity();
-		mockMvc.perform(MockMvcRequestBuilders.post("/example/validationException").contentType(MediaType.APPLICATION_JSON_VALUE)
-				.content(gson.toJson(validationExample)))
+		mockMvc.perform(MockMvcRequestBuilders.post("/example/validationException")
+				.contentType(MediaType.APPLICATION_JSON_VALUE).content(gson.toJson(validationExample)))
 				.andExpect(MockMvcResultMatchers.status().isBadRequest())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("name")));
 	}
