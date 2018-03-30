@@ -7,7 +7,7 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
-import com.cftechsol.rest.entities.GenericEntity;
+import com.cftechsol.rest.entities.GenericAuditEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -28,7 +28,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "email", name = "user_u1"))
-public class User extends GenericEntity<Long> {
+public class User extends GenericAuditEntity<Long> {
 
 	private static final long serialVersionUID = 1626969229170663509L;
 

@@ -2,6 +2,7 @@ package com.cftechsol.rest.user;
 
 import javax.validation.ConstraintViolationException;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,20 @@ public class UserServiceTest {
 	public void shouldCreateUser() throws Exception {
 		User example = new User("shouldCreateUser@company.com", "Password", "User Name");
 		service.save(example);
+	}
+	
+	@Test
+	public void shouldSaveWithPasswordEncripted() throws Exception {
+		User example = new User("shouldSavePasswordEncripted@company.com", "Password", "User Name");
+		example = service.save(example);
+		Assert.assertNotEquals(example.getPassword(), "Password");
+	}
+	
+	@Test
+	public void shouldSaveAuditWithPasswordEncripted() throws Exception {
+		User example = new User("shouldSaveAuditWithPasswordEncripted@company.com", "Password", "User Name");
+		example = service.save(example, 1l);
+		Assert.assertNotEquals(example.getPassword(), "Password");
 	}
 	
 	@Test(expected = ConstraintViolationException.class)

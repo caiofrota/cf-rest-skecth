@@ -20,6 +20,16 @@ public class UserService extends GenericService<UserRepository, User, Long> {
 	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	/**
+	 * Search user by email.
+	 * 
+	 * @param email Email
+	 * @return User
+	 */
+	public User findByEmail(String email) {
+		return this.getRepository().findByEmail(email);
+	}
+	
+	/**
 	 * Save an user.
 	 * 
 	 * @param object
@@ -35,7 +45,26 @@ public class UserService extends GenericService<UserRepository, User, Long> {
 		if (object.getPassword() != null) {
 			object.setPassword(passwordEncoder.encode(object.getPassword()));
 		}
-		return this.getRepository().save(object);
+		return super.save(object);
+	}
+	
+	/**
+	 * Save an user.
+	 * 
+	 * @param object
+	 *            User to save.
+	 * @return Object saved.
+	 * @throws Exception
+	 */
+	public User save(User object, long id) throws Exception {
+		if (this.getRepository().findByEmail(object.getEmail()) != null) {
+			throw new NonUniqueException(object.getClass().getSimpleName(), new String[] { "email" },
+					new String[] { object.getEmail() });
+		}
+		if (object.getPassword() != null) {
+			object.setPassword(passwordEncoder.encode(object.getPassword()));
+		}
+		return super.save(object, id);
 	}
 
 }
