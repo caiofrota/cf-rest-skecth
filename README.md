@@ -65,11 +65,9 @@ git clone https://github.com/caiofrota/cf-rest.git
 @SpringBootApplication
 @ComponentScan(basePackages = { "com.yourpackage", "com.cftechsol" })
 public class Application {
-
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-
 }
 ```
 
