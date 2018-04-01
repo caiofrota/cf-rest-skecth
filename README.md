@@ -44,10 +44,11 @@ git clone https://github.com/caiofrota/cf-rest.git
 ```
   <dependencies>
     <dependency>
-    <groupId>com.cftechsol</groupId>
-    <artifactId>cf-rest</artifactId>
-    <version>1.0.0</version>
-  </dependency>
+      <groupId>com.cftechsol</groupId>
+      <artifactId>cf-rest</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+  </dependencies>
   
   <repositories>
     <repository>
