@@ -60,47 +60,51 @@ public class GenericControllerTest {
 
 	@Test
 	public void shouldFindAll() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/example")).andExpect(MockMvcResultMatchers.status().isOk())
+		mockMvc.perform(MockMvcRequestBuilders.get("/example").header("Origin", "*"))
+				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString(name)));
 	}
 
 	@Test
 	public void shouldFindOneById() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/example/id/1")).andExpect(MockMvcResultMatchers.status().isOk())
+		mockMvc.perform(MockMvcRequestBuilders.get("/example/id/1").header("Origin", "*"))
+				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString(name)));
 	}
 
 	@Test
 	public void shouldUpdateOneById() throws Exception {
 		Gson gson = new Gson();
-		mockMvc.perform(MockMvcRequestBuilders.post("/example").contentType(MediaType.APPLICATION_JSON_VALUE)
-				.content(gson.toJson(exampleUpdate))).andExpect(MockMvcResultMatchers.status().isOk())
+		mockMvc.perform(MockMvcRequestBuilders.post("/example").header("Origin", "*")
+				.contentType(MediaType.APPLICATION_JSON_VALUE).content(gson.toJson(exampleUpdate)))
+				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString(newName)));
 	}
 
 	@Test
 	public void whenValidNameEntityShouldBeFound() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/example/filter?name=" + name))
+		mockMvc.perform(MockMvcRequestBuilders.get("/example/filter?name=" + name).header("Origin", "*"))
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString(name)));
 	}
 
 	@Test
 	public void shouldDeleteById() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.delete("/example?id=1")).andExpect(MockMvcResultMatchers.status().isOk())
+		mockMvc.perform(MockMvcRequestBuilders.delete("/example?id=1").header("Origin", "*"))
+				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("")));
 	}
 
 	@Test
 	public void shouldGetException() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/example/exception"))
+		mockMvc.perform(MockMvcRequestBuilders.get("/example/exception").header("Origin", "*"))
 				.andExpect(MockMvcResultMatchers.status().isInternalServerError())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("Example Message")));
 	}
 
 	@Test
 	public void shouldGetNonUniqueException() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/example/nonUniqueException"))
+		mockMvc.perform(MockMvcRequestBuilders.get("/example/nonUniqueException").header("Origin", "*"))
 				.andExpect(MockMvcResultMatchers.status().isBadRequest())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("keys")));
 	}
@@ -109,7 +113,7 @@ public class GenericControllerTest {
 	public void shouldGetValidationException() throws Exception {
 		Gson gson = new Gson();
 		ExampleEntity validationExample = new ExampleEntity();
-		mockMvc.perform(MockMvcRequestBuilders.post("/example/validationException")
+		mockMvc.perform(MockMvcRequestBuilders.post("/example/validationException").header("Origin", "*")
 				.contentType(MediaType.APPLICATION_JSON_VALUE).content(gson.toJson(validationExample)))
 				.andExpect(MockMvcResultMatchers.status().isBadRequest())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("name")));

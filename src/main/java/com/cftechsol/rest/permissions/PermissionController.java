@@ -1,4 +1,4 @@
-package com.cftechsol.rest.users;
+package com.cftechsol.rest.permissions;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cftechsol.rest.controllers.GenericController;
 
 /**
- * User controller.
+ * Permission controller.
  * 
  * @author Caio Frota {@literal <contact@cftechsol.com>}
  * @version 1.0
  * @since 1.0
  */
 @RestController
-@RequestMapping(path = "/admin/users", produces = MediaType.APPLICATION_JSON_VALUE)
-public class UserController extends GenericController<UserService, User, Long> {
+@RequestMapping(path = "/permissions", produces = MediaType.APPLICATION_JSON_VALUE)
+public class PermissionController extends GenericController<PermissionService, Permission, Long> {
 
-	public UserController() {
-		super(true, "USERS_");
+	public PermissionController() {
+		super(true, "PERMISSIONS_");
 	}
 
 }

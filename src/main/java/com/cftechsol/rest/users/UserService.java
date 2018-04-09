@@ -1,6 +1,6 @@
 package com.cftechsol.rest.users;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,23 +17,27 @@ import com.cftechsol.rest.services.GenericService;
 @Service
 public class UserService extends GenericService<UserRepository, User, Long> {
 
-	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	/**
 	 * Search user by email.
 	 * 
-	 * @param email Email
+	 * @param email
+	 *            Email
 	 * @return User
 	 */
 	public User findByEmail(String email) {
 		return this.getRepository().findByEmail(email);
 	}
-	
+
 	/**
 	 * Save an user.
 	 * 
 	 * @param object
 	 *            User to save.
+	 * @param id
+	 *            User modification.
 	 * @return Object saved.
 	 * @throws Exception
 	 */
@@ -47,7 +51,7 @@ public class UserService extends GenericService<UserRepository, User, Long> {
 		}
 		return super.save(object);
 	}
-	
+
 	/**
 	 * Save an user.
 	 * 

@@ -1,4 +1,4 @@
-package com.cftechsol.rest.users;
+package com.cftechsol.rest.roles;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,12 +13,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 import com.cftechsol.rest.entities.GenericAuditEntity;
-import com.cftechsol.rest.roles.Role;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.cftechsol.rest.permissions.Permission;
+import com.cftechsol.rest.users.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +25,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * User entity.
+ * Role entity.
  * 
  * @author Caio Frota {@literal <contact@cftechsol.com>}
  * @version 1.0
@@ -37,33 +36,22 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "email", name = "user_u1"))
-public class User extends GenericAuditEntity<Long> {
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "cod", name = "role_u1"))
+public class Role extends GenericAuditEntity<Long> {
 
-	private static final long serialVersionUID = 1626969229170663509L;
-
-	@Column
-	@NotNull
-	@Email
-	private String email;
+	private static final long serialVersionUID = 5036881311288942993L;
 
 	@Column
 	@NotNull
-	@JsonIgnore
-	private String password;
+	private String cod;
 
-	@Column
-	@NotNull
-	private String name;
-	
-	@Column
-	@NotNull
-	private boolean enabled;
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE }, mappedBy = "roles")
+	private Set<User> users = new HashSet<User>();
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE })
-	@JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "user_role_fk1")) }, inverseJoinColumns = {
-			@JoinColumn(name = "role_id", foreignKey = @ForeignKey(name = "user_role_fk2")) })
-	@JsonIgnore
-	private Set<Role> roles = new HashSet<Role>();
+	@JoinTable(name = "role_permission", joinColumns = {
+			@JoinColumn(name = "role_id", foreignKey = @ForeignKey(name = "role_permission_fk1")) }, inverseJoinColumns = {
+					@JoinColumn(name = "permission_id", foreignKey = @ForeignKey(name = "role_permission_fk2")) })
+	private Set<Permission> permissions = new HashSet<Permission>();
 
 }

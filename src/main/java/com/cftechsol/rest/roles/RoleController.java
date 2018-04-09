@@ -1,4 +1,4 @@
-package com.cftechsol.rest.users;
+package com.cftechsol.rest.roles;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cftechsol.rest.controllers.GenericController;
 
 /**
- * User controller.
+ * Role controller.
  * 
  * @author Caio Frota {@literal <contact@cftechsol.com>}
  * @version 1.0
  * @since 1.0
  */
 @RestController
-@RequestMapping(path = "/admin/users", produces = MediaType.APPLICATION_JSON_VALUE)
-public class UserController extends GenericController<UserService, User, Long> {
+@RequestMapping(path = "/roles", produces = MediaType.APPLICATION_JSON_VALUE)
+public class RoleController extends GenericController<RoleService, Role, Long> {
 
-	public UserController() {
-		super(true, "USERS_");
+	public RoleController() {
+		super(true, "ROLES_");
 	}
 
 }

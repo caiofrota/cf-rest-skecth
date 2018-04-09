@@ -11,6 +11,8 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -38,7 +40,7 @@ public class UseControllerTest {
 
 	@Before
 	public void setup() throws Exception {
-		User user = new User("email@company.com", "password", "User Name");
+		User user = new User("email@company.com", "password", "User Name", true, null);
 		user.setId(1l);
 
 		List<User> userList = new ArrayList<User>();
@@ -49,16 +51,20 @@ public class UseControllerTest {
 	}
 
 	@Test
+	@WithMockUser(username = "email@company.com", password = "password", roles = { "ADMIN" })
 	public void passwordShouldntBePresentInFindAll() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/users")).andExpect(MockMvcResultMatchers.status().isOk())
+		mockMvc.perform(MockMvcRequestBuilders.get("/admin/users").header("Origin", "*"))
+				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("email@company.com")))
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("User Name")))
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.not(Matchers.containsString("password"))));
 	}
 
 	@Test
+	@WithMockUser(username = "email@company.com", password = "password", roles = { "ADMIN" })
 	public void passwordShouldntBePresentInFindById() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/users/id/1")).andExpect(MockMvcResultMatchers.status().isOk())
+		mockMvc.perform(MockMvcRequestBuilders.get("/admin/users/id/1").header("Origin", "*"))
+				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("email@company.com")))
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("User Name")))
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.not(Matchers.containsString("password"))));
