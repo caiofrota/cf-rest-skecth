@@ -30,7 +30,7 @@ import com.cftechsol.rest.users.UserService;
  */
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = UserController.class, secure = false)
-public class UseControllerTest {
+public class UserControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
