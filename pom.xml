@@ -22,7 +22,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<props.compile.jdk.source>1.8</props.compile.jdk.source>
 		<props.compile.jdk.target>1.8</props.compile.jdk.target>
-		<meuteste>aafafafa</meuteste>
 	</properties>
 
 	<!-- Developers specification -->
