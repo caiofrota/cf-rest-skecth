@@ -36,8 +36,6 @@ public class UserService extends GenericService<UserRepository, User, Long> {
 	 * 
 	 * @param object
 	 *            User to save.
-	 * @param id
-	 *            User modification.
 	 * @return Object saved.
 	 * @throws Exception
 	 */
