@@ -31,7 +31,7 @@ public class UserService extends GenericService<UserRepository, User, Long> {
 		return this.getRepository().findByEmail(email);
 	}
 
-	/**
+	/** 
 	 * Save an user.
 	 * 
 	 * @param object
