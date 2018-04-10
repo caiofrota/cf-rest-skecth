@@ -30,7 +30,6 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(AccessDeniedException.class)
 	protected ResponseEntity<Object> handleAccessDeniedException(AccessDeniedException e) {
-		e.printStackTrace();
 		ApiError apiError = new ApiError(HttpStatus.FORBIDDEN, e.getMessage());
 		return new ResponseEntity<Object>(apiError, apiError.getStatus());
 	}
