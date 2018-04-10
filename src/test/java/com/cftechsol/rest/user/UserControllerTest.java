@@ -50,23 +50,54 @@ public class UserControllerTest {
 	}
 
 	@Test
-	@WithMockUser(username = "email@company.com", password = "password", roles = { "ADMIN" })
+	@WithMockUser(username = "admin@company.com", password = "password", authorities = { "ADMIN" })
 	public void passwordShouldntBePresentInFindAll() throws Exception {
+		// @formatter:off
 		mockMvc.perform(MockMvcRequestBuilders.get("/admin/users").header("Origin", "*"))
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("email@company.com")))
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("User Name")))
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.not(Matchers.containsString("password"))));
+		// @formatter:on
 	}
 
 	@Test
-	@WithMockUser(username = "email@company.com", password = "password", roles = { "ADMIN" })
+	@WithMockUser(username = "admin@company.com", password = "password", authorities = { "ADMIN" })
 	public void passwordShouldntBePresentInFindById() throws Exception {
+		// @formatter:off
 		mockMvc.perform(MockMvcRequestBuilders.get("/admin/users/id/1").header("Origin", "*"))
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("email@company.com")))
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("User Name")))
 				.andExpect(MockMvcResultMatchers.content().string(Matchers.not(Matchers.containsString("password"))));
+		// @formatter:on
+	}
+
+	@Test
+	@WithMockUser(username = "usernoaccess@company.com", password = "password", authorities = {})
+	public void shouldGetForbiddenWithoutAuthorities() throws Exception {
+		// @formatter:off
+		mockMvc.perform(MockMvcRequestBuilders.get("/admin/users").header("Origin", "*"))
+				.andExpect(MockMvcResultMatchers.status().isForbidden());
+		// @formatter:on
+	}
+
+	@Test
+	@WithMockUser(username = "otherauthority@company.com", password = "password", authorities = { "OTHER_AUTHORITY" })
+	public void shouldGetAccessWithDifferentAuthorities() throws Exception {
+		// @formatter:off
+		mockMvc.perform(MockMvcRequestBuilders.get("/admin/users").header("Origin", "*"))
+				.andExpect(MockMvcResultMatchers.status().isForbidden());
+		// @formatter:on
+	}
+
+	@Test
+	@WithMockUser(username = "usersconsult@company.com", password = "password", authorities = { "USERS_FIND_ALL" })
+	public void shouldGetAccessWithUserAuthorities() throws Exception {
+		// @formatter:off
+		mockMvc.perform(MockMvcRequestBuilders.get("/admin/users").header("Origin", "*"))
+				.andExpect(MockMvcResultMatchers.status().isOk());
+		// @formatter:on
 	}
 
 }
