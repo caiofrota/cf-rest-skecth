@@ -1,8 +1,7 @@
 package com.cftechsol.rest.exceptions.api;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 /**
  * Class that maps an object of type unique validation error.
@@ -11,8 +10,7 @@ import lombok.EqualsAndHashCode;
  * @version 1.0
  * @since 1.0
  */
-@Data
-@EqualsAndHashCode(callSuper = false)
+@Getter
 @AllArgsConstructor
 public class ApiUniqueValidationError extends ApiSubError {
 
