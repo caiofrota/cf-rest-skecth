@@ -140,7 +140,11 @@ public class ExampleController {
 
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Spring Boot](https://projects.spring.io/spring-boot/) - Inversion Of Control (IOC) - Boot, Data and Test
+* [Spring Security](https://projects.spring.io/spring-security/) - Securing the application.
+* [JSON Web Token](https://www.jsonwebtoken.io/) - Creating Secure, Signed JWTs
 * [Project Lombok](https://projectlombok.org/) - Reducing Boilerplate Code
+* [MySQL](https://www.mysql.com/) - MySQL Database
+* [Flyway](https://flywaydb.org/) - Database migrations.
 * [H2 Database](http://www.h2database.com) - Java SQL Database - To run the tests
 * [GSON](https://github.com/google/gson) - Google JSON library for Java
 * [Travis CI](https://travis-ci.org/) - Continuos Integration
