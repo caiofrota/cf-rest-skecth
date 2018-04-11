@@ -1,6 +1,9 @@
 package com.cftechsol.rest.example;
 
+import java.util.List;
+
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +15,14 @@ public class ExampleSecurityController extends GenericController<ExampleService,
 
 	public ExampleSecurityController() {
 		super(true, "EXAMPLE_");
+	}
+	
+	@GetMapping(path="/allroles")
+	public List<ExampleEntity> mustBeAllAuthorities() {
+		if (secured) {
+			super.hasAllRoles("EXAMPLE_FIND_ALL", "EXAMPLE_SAVE");
+		}
+		return super.getService().findAll();
 	}
 	
 }

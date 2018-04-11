@@ -43,7 +43,7 @@ public class GenericController<S extends GenericService<? extends JpaRepository<
 	@Autowired
 	private S service;
 
-	private boolean secured;
+	protected boolean secured;
 	private String rolePrefix;
 
 	public GenericController(boolean secured, String rolePrefix) {
@@ -109,9 +109,7 @@ public class GenericController<S extends GenericService<? extends JpaRepository<
 			return;
 		}
 		for (String role : roles) {
-			if (authorities.contains(new SimpleGrantedAuthority(role))) {
-				return;
-			} else {
+			if (!authorities.contains(new SimpleGrantedAuthority(role))) {
 				throw new AccessDeniedException("Access is denied");
 			}
 		}
