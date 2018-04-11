@@ -78,10 +78,12 @@ public class TokenAuthenticationService {
 			}
 			authorities += (String) authority.get("authority");
 		}
+		// @formatter:off
 		return user != null
 				? new UsernamePasswordAuthenticationToken(user, null,
 						AuthorityUtils.commaSeparatedStringToAuthorityList(authorities))
 				: null;
+		// @formatter:on
 	}
 
 	public static Authentication getAuthentication(HttpServletRequest request) {
