@@ -57,13 +57,12 @@ public class RolePermission extends GenericAuditEntity<RolePermissionPK> {
             return false;
  
         RolePermission that = (RolePermission) o;
-        return Objects.equals(role, that.role) &&
-               Objects.equals(permission, that.permission);
+        return Objects.equals(getId(), that.getId());
     }
  
     @Override
     public int hashCode() {
-        return Objects.hash(role, permission);
+        return Objects.hash(getId());
     }
 
 }

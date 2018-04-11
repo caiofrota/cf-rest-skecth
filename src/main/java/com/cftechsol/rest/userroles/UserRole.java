@@ -57,13 +57,12 @@ public class UserRole extends GenericAuditEntity<UserRolePK> {
             return false;
  
         UserRole that = (UserRole) o;
-        return Objects.equals(user, that.user) &&
-               Objects.equals(role, that.role);
+        return Objects.equals(getId(), that.getId());
     }
  
     @Override
     public int hashCode() {
-        return Objects.hash(user, role);
+        return Objects.hash(this.getId());
     }
 
 }
