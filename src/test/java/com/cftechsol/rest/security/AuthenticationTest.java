@@ -2,9 +2,7 @@ package com.cftechsol.rest.security;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.servlet.Filter;
@@ -27,9 +25,13 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.cftechsol.rest.permissions.Permission;
 import com.cftechsol.rest.permissions.PermissionService;
+import com.cftechsol.rest.rolepermissions.RolePermission;
+import com.cftechsol.rest.rolepermissions.RolePermissionService;
 import com.cftechsol.rest.roles.Role;
 import com.cftechsol.rest.roles.RoleService;
 import com.cftechsol.rest.security.jwt.filters.UserCredentials;
+import com.cftechsol.rest.userroles.UserRole;
+import com.cftechsol.rest.userroles.UserRoleService;
 import com.cftechsol.rest.users.User;
 import com.cftechsol.rest.users.UserService;
 import com.google.gson.Gson;
@@ -55,6 +57,10 @@ public class AuthenticationTest {
 	@Autowired
 	private RoleService roleService;
 	@Autowired
+	private UserRoleService userRoleService;
+	@Autowired
+	private RolePermissionService rolePermissionService;
+	@Autowired
 	private WebApplicationContext webApplicationContext;
 
 	@Value("${cf.rest.jwt.expirationTime}")
@@ -75,16 +81,11 @@ public class AuthenticationTest {
 	@Test
 	public void shouldLogin() throws Exception {
 		// Save admin user.
-		Permission permission = permissionService.save(new Permission("ADMIN", null), 1l);
-		Set<Permission> permissions = new HashSet<Permission>();
-		permissions.add(permission);
-
-		Role role = roleService.save(new Role("ADMIN", null, permissions), 1l);
-		Set<Role> roles = new HashSet<Role>();
-		roles.add(role);
-
-		User example = new User("admin@company.com", "password", "User Name", true, roles);
-		userService.save(example);
+		Permission savedPermission = permissionService.save(new Permission("ADMIN", null), 1l);
+		Role savedRole = roleService.save(new Role("ADMIN", null, null), 1l);
+		User savedUser = userService.save(new User("admin@company.com", "password", "User Name", true, null));
+		UserRole savedUserRole = userRoleService.save(new UserRole(savedUser, savedRole));
+		RolePermission savedRolePermission = rolePermissionService.save(new RolePermission(savedRole, savedPermission));
 
 		Gson gson = new Gson();
 		UserCredentials user = new UserCredentials();
@@ -99,24 +100,21 @@ public class AuthenticationTest {
 				.andExpect(MockMvcResultMatchers.header().exists("Authorization"));
 		// @formatter:on
 
-		userService.delete(example.getId());
-		roleService.delete(role.getId());
-		permissionService.delete(permission.getId());
+		userRoleService.delete(savedUserRole.getId());
+		rolePermissionService.delete(savedRolePermission.getId());
+		userService.delete(savedUser.getId());
+		roleService.delete(savedRole.getId());
+		permissionService.delete(savedPermission.getId());
 	}
 
 	@Test
 	public void shouldLoginUnauthorizedWithWrongPassword() throws Exception {
 		// Save admin user.
-		Permission permission = permissionService.save(new Permission("ADMIN", null), 1l);
-		Set<Permission> permissions = new HashSet<Permission>();
-		permissions.add(permission);
-
-		Role role = roleService.save(new Role("ADMIN", null, permissions), 1l);
-		Set<Role> roles = new HashSet<Role>();
-		roles.add(role);
-
-		User example = new User("admin@company.com", "password", "User Name", true, roles);
-		userService.save(example);
+		Permission savedPermission = permissionService.save(new Permission("ADMIN", null), 1l);
+		Role savedRole = roleService.save(new Role("ADMIN", null, null), 1l);
+		User savedUser = userService.save(new User("admin@company.com", "password", "User Name", true, null));
+		UserRole savedUserRole = userRoleService.save(new UserRole(savedUser, savedRole));
+		RolePermission savedRolePermission = rolePermissionService.save(new RolePermission(savedRole, savedPermission));
 
 		Gson gson = new Gson();
 		UserCredentials user = new UserCredentials();
@@ -130,9 +128,11 @@ public class AuthenticationTest {
 				.andExpect(MockMvcResultMatchers.status().isUnauthorized());
 		// @formatter:on
 
-		userService.delete(example.getId());
-		roleService.delete(role.getId());
-		permissionService.delete(permission.getId());
+		userRoleService.delete(savedUserRole.getId());
+		rolePermissionService.delete(savedRolePermission.getId());
+		userService.delete(savedUser.getId());
+		roleService.delete(savedRole.getId());
+		permissionService.delete(savedPermission.getId());
 	}
 
 	@Test

@@ -1,6 +1,7 @@
 package com.cftechsol.rest.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,32 +34,19 @@ public class GenericEntity<PK> implements Serializable {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public boolean equals(Object object) {
-		// Checks if the object is null or not of the same type.
-		if (object == null || !(object instanceof GenericEntity)) {
-			return false;
-		}
-
-		// Checks if the objets are identical.
-		if (this == object) {
-			return true;
-		}
-
-		// Checks if the Ids are equals.
-		GenericEntity<PK> other = (GenericEntity<PK>) object;
-		if (getId() != null && getId().equals(other.getId())) {
-			return true;
-		}
-
-		// Are not equals.
-		return false;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		 
+        if (o == null || getClass() != o.getClass()) 
+            return false;
+ 
+        GenericEntity<PK> that = (GenericEntity<PK>) o;
+        return Objects.equals(id, that.id);
 	}
 
 	@Override
 	public int hashCode() {
-		int result = 17;
-		result = 31 * result + ((getId() == null) ? 0 : getId().hashCode());
-		return result;
+		return Objects.hash(id);
 	}
 
 }
