@@ -14,7 +14,7 @@ import com.cftechsol.rest.users.User;
 import com.cftechsol.rest.users.UserService;
 
 /**
- * GenericService test class.
+ * User service test class.
  * 
  * @author Caio Frota <contact@cftechsol.com>
  * @version 1.0.0
