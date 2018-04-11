@@ -81,8 +81,8 @@ public class AuthenticationTest {
 	@Test
 	public void shouldLogin() throws Exception {
 		// Save admin user.
-		Permission savedPermission = permissionService.save(new Permission("ADMIN", null), 1l);
-		Role savedRole = roleService.save(new Role("ADMIN", null, null), 1l);
+		Permission savedPermission = permissionService.save(new Permission("LOGIN", null), 1l);
+		Role savedRole = roleService.save(new Role("LOGIN", null, null), 1l);
 		User savedUser = userService.save(new User("shouldlogin@company.com", "password", "User Name", true, null));
 		UserRole savedUserRole = userRoleService.save(new UserRole(savedUser, savedRole));
 		RolePermission savedRolePermission = rolePermissionService.save(new RolePermission(savedRole, savedPermission));
@@ -186,5 +186,5 @@ public class AuthenticationTest {
 				.andExpect(MockMvcResultMatchers.status().isOk());
 		// @formatter:on
 	}
-
+	
 }
