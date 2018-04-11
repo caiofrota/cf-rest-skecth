@@ -78,7 +78,7 @@ public class AuthenticationTest {
 				.apply(SecurityMockMvcConfigurers.springSecurity()).addFilters(filters).build();
 	}
 
-	@Test
+//	@Test
 	public void shouldLogin() throws Exception {
 		// Save admin user.
 		Permission savedPermission = permissionService.save(new Permission("LOGIN", null), 1l);
