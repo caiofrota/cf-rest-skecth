@@ -83,13 +83,13 @@ public class AuthenticationTest {
 		// Save admin user.
 		Permission savedPermission = permissionService.save(new Permission("ADMIN", null), 1l);
 		Role savedRole = roleService.save(new Role("ADMIN", null, null), 1l);
-		User savedUser = userService.save(new User("admin@company.com", "password", "User Name", true, null));
+		User savedUser = userService.save(new User("shouldlogin@company.com", "password", "User Name", true, null));
 		UserRole savedUserRole = userRoleService.save(new UserRole(savedUser, savedRole));
 		RolePermission savedRolePermission = rolePermissionService.save(new RolePermission(savedRole, savedPermission));
 
 		Gson gson = new Gson();
 		UserCredentials user = new UserCredentials();
-		user.setUsername("admin@company.com");
+		user.setUsername("shouldlogin@company.com");
 		user.setPassword("password");
 		// @formatter:off
 		mockMvc.perform(MockMvcRequestBuilders.post("/login")
