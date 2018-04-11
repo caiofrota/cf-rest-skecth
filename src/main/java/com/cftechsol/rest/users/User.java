@@ -56,14 +56,6 @@ public class User extends GenericAuditEntity<Long> {
 	@NotNull
 	private boolean enabled;
 
-	// @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE })
-	// @JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id",
-	// foreignKey = @ForeignKey(name = "user_role_fk1")) }, inverseJoinColumns = {
-	// @JoinColumn(name = "role_id", foreignKey = @ForeignKey(name =
-	// "user_role_fk2")) })
-	// @JsonIgnore
-	// private Set<Role> roles = new HashSet<Role>();
-
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<UserRole> roles = new ArrayList<>();
 

@@ -59,7 +59,7 @@ public class UserService extends GenericService<UserRepository, User, Long> {
 	 * @throws Exception
 	 */
 	public User save(User object, long id) throws Exception {
-		if (this.getRepository().findByEmail(object.getEmail()) != null) {
+		if (this.findByEmail(object.getEmail()) != null) {
 			throw new NonUniqueException(object.getClass().getSimpleName(), new String[] { "email" },
 					new String[] { object.getEmail() });
 		}

@@ -41,12 +41,12 @@ public class GenericEntity<PK> implements Serializable {
             return false;
  
         GenericEntity<PK> that = (GenericEntity<PK>) o;
-        return Objects.equals(id, that.id);
+        return Objects.equals(getId(), that.getId());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(getId());
 	}
 
 }
