@@ -169,7 +169,7 @@ public class AuthenticationTest {
 	}
 
 	@Test
-	public void shouldGetAccessWithToken() throws Exception {
+	public void test() throws Exception {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		authorities.add(() -> {
 			return "ADMIN";
