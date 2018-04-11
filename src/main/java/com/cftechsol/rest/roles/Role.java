@@ -1,23 +1,18 @@
 package com.cftechsol.rest.roles;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import com.cftechsol.rest.entities.GenericAuditEntity;
-import com.cftechsol.rest.permissions.Permission;
-import com.cftechsol.rest.users.User;
+import com.cftechsol.rest.userroles.UserRole;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -45,13 +40,10 @@ public class Role extends GenericAuditEntity<Long> {
 	@NotNull
 	private String cod;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE }, mappedBy = "roles")
-	private Set<User> users = new HashSet<User>();
+	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<UserRole> permissions = new ArrayList<>();
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE })
-	@JoinTable(name = "role_permission", joinColumns = {
-			@JoinColumn(name = "role_id", foreignKey = @ForeignKey(name = "role_permission_fk1")) }, inverseJoinColumns = {
-					@JoinColumn(name = "permission_id", foreignKey = @ForeignKey(name = "role_permission_fk2")) })
-	private Set<Permission> permissions = new HashSet<Permission>();
+	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<UserRole> users = new ArrayList<>();
 
 }

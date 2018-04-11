@@ -1,19 +1,18 @@
 package com.cftechsol.rest.permissions;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import com.cftechsol.rest.entities.GenericAuditEntity;
-import com.cftechsol.rest.roles.Role;
+import com.cftechsol.rest.rolepermissions.RolePermission;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,7 +40,7 @@ public class Permission extends GenericAuditEntity<Long> {
 	@NotNull
 	private String cod;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE }, mappedBy = "permissions")
-	private Set<Role> users = new HashSet<Role>();
+	@OneToMany(mappedBy = "permission", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<RolePermission> roles = new ArrayList<>();
 
 }
