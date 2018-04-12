@@ -31,7 +31,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "cod", name = "role_u1"))
+@Table(name = "cf_rest_role", uniqueConstraints = @UniqueConstraint(columnNames = "cod", name = "cf_rest_role_u1"))
 public class Role extends GenericAuditEntity<Long> {
 
 	private static final long serialVersionUID = 5036881311288942993L;

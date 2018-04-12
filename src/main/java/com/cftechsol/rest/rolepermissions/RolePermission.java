@@ -32,7 +32,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "role_permission")
+@Table(name = "cf_rest_role_permission")
 public class RolePermission extends GenericAuditEntity<RolePermissionPK> {
 	
 	private static final long serialVersionUID = -4108166483863035209L;
@@ -42,12 +42,12 @@ public class RolePermission extends GenericAuditEntity<RolePermissionPK> {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@MapsId("roleId")
-	@JoinColumn(foreignKey = @ForeignKey(name = "role_permission_fk1"))
+	@JoinColumn(foreignKey = @ForeignKey(name = "cf_rest_role_permission_fk1"))
 	private Role role;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@MapsId("permissionId")
-	@JoinColumn(foreignKey = @ForeignKey(name = "role_permission_fk2"))
+	@JoinColumn(foreignKey = @ForeignKey(name = "cf_rest_role_permission_fk2"))
 	private Permission permission;
 	
 	public RolePermission(Role role, Permission permission) {

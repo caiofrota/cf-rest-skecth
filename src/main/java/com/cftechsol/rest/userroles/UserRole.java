@@ -32,7 +32,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user_role")
+@Table(name = "cf_rest_user_role")
 public class UserRole extends GenericAuditEntity<UserRolePK> {
 	
 	private static final long serialVersionUID = -7345772620617257769L;
@@ -42,12 +42,12 @@ public class UserRole extends GenericAuditEntity<UserRolePK> {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@MapsId("userId")
-	@JoinColumn(foreignKey = @ForeignKey(name = "user_role_fk1"))
+	@JoinColumn(foreignKey = @ForeignKey(name = "cf_rest_user_role_fk1"))
 	private User user;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@MapsId("roleId")
-	@JoinColumn(foreignKey = @ForeignKey(name = "user_role_fk2"))
+	@JoinColumn(foreignKey = @ForeignKey(name = "cf_rest_user_role_fk2"))
 	private Role role;
 	
 	public UserRole(User user, Role role) {

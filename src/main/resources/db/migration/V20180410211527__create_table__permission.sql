@@ -1,5 +1,5 @@
 -- Create table
-create table permission (
+create table cf_rest_permission (
   id         bigint       not null auto_increment,
   created_by bigint,
   created_on datetime,
@@ -13,5 +13,5 @@ DEFAULT CHARSET=UTF8
 ;
 
 -- Unique constraints
-alter table permission add constraint permission_u1
+alter table permission add constraint cf_rest_permission_u1
                                unique (cod)

@@ -1,5 +1,5 @@
 -- Create table
-create table user (
+create table cf_rest_user (
   id         bigint       not null auto_increment,
   created_by bigint,
   created_on datetime,
@@ -16,5 +16,5 @@ DEFAULT CHARSET=UTF8
 ;
 
 -- Unique constraints
-alter table user add constraint user_u1
+alter table user add constraint cf_rest_user_u1
                          unique (email);

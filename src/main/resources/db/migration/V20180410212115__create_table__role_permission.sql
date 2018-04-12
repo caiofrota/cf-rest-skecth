@@ -1,5 +1,5 @@
 -- Create table
-create table role_permission (
+create table cf_rest_role_permission (
   created_by    bigint,
   created_on    datetime,
   updated_by    bigint,
@@ -13,12 +13,12 @@ DEFAULT CHARSET=UTF8
 ;
 
 -- Relationships
-alter table role_permission add constraint role_permission_fk2
+alter table role_permission add constraint cf_rest_role_permission_fk2
                                foreign key (permission_id)
                                references permission (id)
 ;
 
-alter table role_permission add constraint role_permission_fk1
+alter table role_permission add constraint cf_rest_role_permission_fk1
                                foreign key (role_id)
                                 references role (id)
 ;
