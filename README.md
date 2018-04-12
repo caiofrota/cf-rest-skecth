@@ -18,70 +18,17 @@ Version 1.0.0 is still in progress.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [Using API](#deployment) for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
 What things you need to install the software and how to install them
 
 * [Maven](https://maven.apache.org/) - Dependency Management
-* [Project Lombok](https://projectlombok.org/) - Reducing Boilerplate Code
-
-### Installing
-
-Clone this repository
-
-```
-git clone https://github.com/caiofrota/cf-rest.git
-```
-
-## Deployment
-
-*pom.xml*
-
-* Add the dependency and the repository in your pom.xml
-
-```
-  <dependencies>
-    <dependency>
-      <groupId>com.cftechsol</groupId>
-      <artifactId>cf-rest</artifactId>
-      <version>1.0.0</version>
-    </dependency>
-  </dependencies>
-  
-  <repositories>
-    <repository>
-      <id>cftechsol.com</id>
-      <url>https://maven2.cftechsol.com</url>
-    </repository>
-  </repositories>
-```
-
-*Application.java*
-
-* Add "com.cftechsol" to @ComponentScan
-
-```
-@SpringBootApplication
-@ComponentScan(basePackages = { "com.yourpackage", "com.cftechsol" })
-@EnableJpaRepositories(basePackages = { "com.yourpackage", "com.cftechsol" })
-@EntityScan(basePackages = { "com.yourpackage", "com.cftechsol" })
-public class Application {
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
-}
-```
 
 ### Using API
 
-* [Using Authentication](/readme/USING_AUTHENTICATION.md)
-* [Using GenericEntity and GenericAuditEntity](/readme/USING_GENERICENTITY_AND_GENERICAUDITENTITY.md)
-* [Using GenericService](/readme/USING_GENERICSERVICE.md)
-* [Using GenericController](/readme/USING_GENERICCONTROLLER.md)
-* [Using GenericController with security](/readme/USING_GENERICCONTROLLER_SECURED.md)
-* [Exception Handler](/readme/EXCEPTION_HANDLER.md)
+Please read our [Wiki](/wiki) for details.
 
 ### Built With
 
@@ -105,7 +52,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/caiofrota/6e65a17fd3bf100d
 
 ## Authors
 
-* **Caio Frota** - *Initial work* - [caiofrota](https://github.com/caiofrota)
+* **Caio Frota** - *Initial work* - [caiofrota](https://github.com/caiofrota) | [CF Technology Solutions](https://cftechsol.com)
 
 ## License
 
