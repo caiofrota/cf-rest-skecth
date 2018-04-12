@@ -32,22 +32,7 @@ Status: 500
 Body:
 {
   "status": "INTERNAL_SERVER_ERROR",
-  "timestamp":{
-    "dayOfMonth": 11,
-    "dayOfWeek": "WEDNESDAY",
-    "dayOfYear": 101,
-    "month": "APRIL",
-    "monthValue": 4,
-    "year": 2018,
-    "hour": 22,
-    "minute": 36,
-    "nano": 306000000,
-    "second": 7,
-    "chronology":{
-      "id": "ISO",
-      "calendarType": "iso8601"
-    }
-  },
+  "timestamp": "2018-04-11 10:44:01"
   "message": "Exception test!",
   "errors": null
 }
