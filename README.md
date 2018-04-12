@@ -46,6 +46,14 @@ Please read our [Wiki](https://github.com/caiofrota/cf-rest/wiki) for details.
 * [Codecov](https://codecov.io/) - Code coverage reports repository
 * [Maven Wagon FTP](http://maven.apache.org/wagon/wagon-providers/wagon-ftp/) - Apache FTP Plugin
 
+## Support or Contact
+
+Contact us at contact@cftechsol.com for questions and we'll help you sort it out.
+
+## Issues
+
+Find a bug or want to request a new feature? Please let us know by [submitting an issue](https://github.com/caiofrota/cf-rest/issues).
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/caiofrota/6e65a17fd3bf100d058cb48dcc780b21) for details on our code of conduct, and the process for submitting pull requests to us.
