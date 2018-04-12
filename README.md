@@ -18,7 +18,7 @@ Version 1.0.0 is still in progress.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [Using API](#deployment) for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [Using API](#using-api) for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
