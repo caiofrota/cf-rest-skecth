@@ -22,9 +22,9 @@ import com.cftechsol.rest.example.ExampleSecurityController;
 import com.cftechsol.rest.example.ExampleService;
 
 /**
- * Authentication test class.
+ * Permissions test class.
  * 
- * @author Caio Frota <contact@cftechsol.com>
+ * @author Caio Frota {@literal <contact@cftechsol.com>}
  * @version 1.0.0
  * @since 1.0.0
  */

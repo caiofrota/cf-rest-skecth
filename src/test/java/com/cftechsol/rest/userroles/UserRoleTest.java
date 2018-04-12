@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.cftechsol.rest.example.ExampleEntity;
 
 /**
- * Generic entity test class.
+ * User role test class.
  * 
  * @author Caio Frota <contact@cftechsol.com>
  * @version 1.0.0

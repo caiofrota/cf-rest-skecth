@@ -19,7 +19,7 @@ import com.cftechsol.rest.security.jwt.filters.JWTAuthenticationFilter;
 import com.cftechsol.rest.security.jwt.filters.JWTLoginFilter;
 
 /**
- * Web security configuration.
+ * Web security configurations.
  * 
  * @author Caio Frota {@literal <contact@cftechsol.com>}
  * @version 1.0

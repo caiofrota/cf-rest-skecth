@@ -15,6 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cftechsol.rest.controllers.GenericController;
 import com.cftechsol.rest.exceptions.NonUniqueException;
 
+/**
+ * Example controller to execute test.
+ * 
+ * @author Caio Frota {@literal <contact@cftechsol.com>}
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 @RestController
 @RequestMapping(path = "/example", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ExampleController extends GenericController<ExampleService, ExampleEntity, Long> {

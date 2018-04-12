@@ -9,6 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cftechsol.rest.controllers.GenericController;
 
+/**
+ * Controller example with security to execute test.
+ * 
+ * @author Caio Frota {@literal <contact@cftechsol.com>}
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 @RestController
 @RequestMapping(path = "/admin/example", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ExampleSecurityController extends GenericController<ExampleService, ExampleEntity, Long> {

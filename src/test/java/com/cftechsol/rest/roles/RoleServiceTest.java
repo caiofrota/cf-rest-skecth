@@ -13,7 +13,7 @@ import com.cftechsol.rest.exceptions.NonUniqueException;
 /**
  * Role service test class.
  * 
- * @author Caio Frota <contact@cftechsol.com>
+ * @author Caio Frota {@literal <contact@cftechsol.com>}
  * @version 1.0.0
  * @since 1.0.0
  */

@@ -7,7 +7,7 @@ import com.cftechsol.rest.services.GenericService;
 /**
  * Example service to execute test.
  * 
- * @author Caio Frota <contact@cftechsol.com>
+ * @author Caio Frota {@literal <contact@cftechsol.com>}
  * @version 1.0.0
  * @since 1.0.0
  */

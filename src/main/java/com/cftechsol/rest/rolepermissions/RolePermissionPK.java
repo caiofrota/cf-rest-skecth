@@ -12,9 +12,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
+ * Role permission primary key.
  * 
- * @author Caio Frota
- *
+ * @author Caio Frota {@literal <contact@cftechsol.com>}
+ * @version 1.0
+ * @since 1.0
  */
 @Getter
 @Setter

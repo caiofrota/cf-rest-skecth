@@ -23,9 +23,9 @@ import com.cftechsol.rest.example.ExampleService;
 import com.google.gson.Gson;
 
 /**
- * GenericService test class.
+ * GenericController test class.
  * 
- * @author Caio Frota <contact@cftechsol.com>
+ * @author Caio Frota {@literal <contact@cftechsol.com>}
  * @version 1.0.0
  * @since 1.0.0
  */
