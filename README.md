@@ -12,19 +12,11 @@
 
 # CF Rest
 
-An API to assist rest projects.
-
-Version 1.0.0 is still in progress.
+CF Rest is an API to accelerate the creation of RESTful applications!
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [Using API](#using-api) for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-* [Maven](https://maven.apache.org/) - Dependency Management
 
 ### Using API
 
