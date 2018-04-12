@@ -10,8 +10,6 @@ GenericEntity<PK> is a super class that maps an entity with Id field!
 
 GenericAuditEntity<PK> is a GenericEntity with audit fields! (created by, updated by, created on, updated on) 
 
-#### Example of use exception handler
-
 * Example GenericEntity
 
 ```

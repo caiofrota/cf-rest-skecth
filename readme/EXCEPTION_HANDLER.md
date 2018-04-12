@@ -6,8 +6,6 @@
 
 ### Exception Handler
 
-#### Example of use exception handler
-
 * Code
 
 ```

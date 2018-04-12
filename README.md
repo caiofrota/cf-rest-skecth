@@ -74,43 +74,13 @@ public class Application {
 }
 ```
 
-### Running example
+### Using API
 
+* [Using Authentication](/readme/USING_AUTHENTICATION.md)
 * [Using GenericEntity and GenericAuditEntity](/readme/USING_GENERICENTITY_AND_GENERICAUDITENTITY.md)
-
-#### Example of use GenericService
-
-```
-import org.springframework.stereotype.Service;
-import com.cftechsol.rest.services.GenericService;
-
-@Service
-public class ExampleService extends GenericService<ExampleRepository, ExampleEntity, Long> {
-	public ExampleEntity findByName(String name) {
-		return this.getRepository().findByName(name);
-	};
-}
-```
-
-#### Example of use GenericController
-
-```
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import com.cftechsol.rest.controllers.GenericController;
-
-@RestController
-@RequestMapping(path = "/example", produces = MediaType.APPLICATION_JSON_VALUE)
-public class ExampleController extends GenericController<ExampleService, ExampleEntity, Long> {
-	@GetMapping(path="/filter")
-	public ExampleEntity findByName(String name) {
-		return this.getService().findByName(name);
-	}
-}
-```
-
+* [Using GenericService](/readme/USING_GENERICSERVICE.md)
+* [Using GenericController](/readme/USING_GENERICCONTROLLER.md)
+* [Using GenericController with security](/readme/USING_GENERICCONTROLLER_SECURED.md)
 * [Exception Handler](/readme/EXCEPTION_HANDLER.md)
 
 ### Built With
