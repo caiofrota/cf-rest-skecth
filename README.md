@@ -123,18 +123,7 @@ public class ExampleController extends GenericController<ExampleService, Example
 }
 ```
 
-#### Example of use exception handler
-
-```
-@Controller
-@RequestMapping(path = "/example", produces = MediaType.APPLICATION_JSON_VALUE)
-public class ExampleController {
-	@GetMapping(path="/hello")
-	public void getException() throws Exception {
-		throw new Exception("Exception test!");
-	}
-}
-```
+* [Exception Handler](/readme/EXCEPTION_HANDLER.md)
 
 ### Built With
 
