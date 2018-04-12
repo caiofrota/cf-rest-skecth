@@ -8,7 +8,7 @@
 
 GenericController<Service, Entity, PK> is a super class that maps a controller with basic routes!
 
-- You must pass Bearer token in the "Authorization" header, see [Using Authentication](/USING_AUTHENTICATION.md)
+- You must pass Bearer token in the "Authorization" header, see [Using Authentication](USING_AUTHENTICATION.md)
 - To map secured routes, you must put in the path /admin/**
 - If you want to control with roles, you must call super constructor passing true and a role prefix
 
@@ -61,7 +61,9 @@ public class ExampleController extends GenericController<ExampleService, Example
 ```
 
 You'll get 401 when the token is expired.
+
 You'll get 403 when the "Authorization" is not present.
+
 You'll get 500 when the token is invalid.
 
 [Back to REAMDE.md](https://github.com/caiofrota/cf-rest)

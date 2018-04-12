@@ -20,6 +20,7 @@ Authorization: Bearer eyJjYuciOiHyRzUxMiJ9.eyJhdXRob3JpdGllcyI6W3siYXV0aG9yaXR5I
 ```
 
 You'll get 401 when username or password is invalid.
+
 You'll get 500 when username and password is not present.
 
 [Back to REAMDE.md](https://github.com/caiofrota/cf-rest)
