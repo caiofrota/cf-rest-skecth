@@ -76,19 +76,7 @@ public class Application {
 
 ### Running example
 
-#### Example of use GenericEntity
-
-```
-import javax.persistence.Entity;
-import com.cftechsol.rest.entities.GenericEntity;
-import lombok.Data;
-
-@Entity
-@Data
-public class ExampleEntity extends GenericEntity<Long> {
-	private String name;
-}
-```
+* [Using GenericEntity and GenericAuditEntity](/readme/USING_GENERICENTITY_AND_GENERICAUDITENTITY.md)
 
 #### Example of use GenericService
 
