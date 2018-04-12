@@ -28,7 +28,7 @@ What things you need to install the software and how to install them
 
 ### Using API
 
-Please read our [Wiki](/wiki) for details.
+Please read our [Wiki](https://github.com/caiofrota/cf-rest/wiki) for details.
 
 ### Built With
 
